@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.center {
+  text-align: center;
+  margin-top: 17em;
+}
+
+.hidden {
+  display: none;
+}
