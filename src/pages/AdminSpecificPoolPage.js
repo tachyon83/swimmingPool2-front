@@ -9,6 +9,8 @@ import { Form, Button, Col, Row } from "react-bootstrap";
 import "../styles/AdminSpecificPoolPage.css";
 const host = require("../host");
 
+axios.defaults.withCredentials = true;
+
 function AdminSpecificPoolPage({ history, match }) {
   let historyUse = useHistory();
 
@@ -90,107 +92,107 @@ function AdminSpecificPoolPage({ history, match }) {
               poolId={poolId}
             />
           ) : (
-            <Form id="adminSpecificPoolForm">
-              <Form.Group as={Row}>
-                <Form.Label column sm={2}>
-                  수영장 이름
+              <Form id="adminSpecificPoolForm">
+                <Form.Group as={Row}>
+                  <Form.Label column sm={2}>
+                    수영장 이름
                 </Form.Label>
-                <Col sm={10}>
-                  <Form.Control
-                    type="text"
-                    placeholder="수영장 이름을 입력하세요."
-                  />
-                </Col>
-              </Form.Group>
-              <Form.Group as={Row}>
-                <Form.Label column sm={2}>
-                  수영장 주소
+                  <Col sm={10}>
+                    <Form.Control
+                      type="text"
+                      placeholder="수영장 이름을 입력하세요."
+                    />
+                  </Col>
+                </Form.Group>
+                <Form.Group as={Row}>
+                  <Form.Label column sm={2}>
+                    수영장 주소
                 </Form.Label>
-                <Col sm={10}>
-                  <Form.Control
-                    type="text"
-                    placeholder="수영장 주소를 입력하세요."
-                  />
-                </Col>
-              </Form.Group>
-              <Form.Group as={Row}>
-                <Form.Label column sm={2}>
-                  수영장 전화번호
+                  <Col sm={10}>
+                    <Form.Control
+                      type="text"
+                      placeholder="수영장 주소를 입력하세요."
+                    />
+                  </Col>
+                </Form.Group>
+                <Form.Group as={Row}>
+                  <Form.Label column sm={2}>
+                    수영장 전화번호
                 </Form.Label>
-                <Col sm={10}>
-                  <Form.Control
-                    type="text"
-                    placeholder="수영장 전화번호를 입력하세요."
-                  />
-                </Col>
-              </Form.Group>
-              <Form.Group as={Row}>
-                <Form.Label column sm={2}>
-                  세부사항
+                  <Col sm={10}>
+                    <Form.Control
+                      type="text"
+                      placeholder="수영장 전화번호를 입력하세요."
+                    />
+                  </Col>
+                </Form.Group>
+                <Form.Group as={Row}>
+                  <Form.Label column sm={2}>
+                    세부사항
                 </Form.Label>
-                <Col sm={10}>
-                  <Form.Row>
-                    <Form.Group as={Col}>
-                      <Form.Label className="font-weight-bold">
-                        운영 방식
+                  <Col sm={10}>
+                    <Form.Row>
+                      <Form.Group as={Col}>
+                        <Form.Label className="font-weight-bold">
+                          운영 방식
                       </Form.Label>
-                      <div className="mb-3">
-                        <Form.Check
-                          label="공공"
-                          value="public"
-                          name="poolType"
-                          type="radio"
-                        />
-                        <Form.Check
-                          label="사설"
-                          value="private"
-                          name="poolType"
-                          type="radio"
-                        />
-                        <Form.Check
-                          label="호텔"
-                          value="hotel"
-                          name="poolType"
-                          type="radio"
-                        />
-                      </div>
-                    </Form.Group>
-                    <Form.Group as={Col}>
-                      <Form.Label className="font-weight-bold">
-                        전용 수영장
+                        <div className="mb-3">
+                          <Form.Check
+                            label="공공"
+                            value="public"
+                            name="poolType"
+                            type="radio"
+                          />
+                          <Form.Check
+                            label="사설"
+                            value="private"
+                            name="poolType"
+                            type="radio"
+                          />
+                          <Form.Check
+                            label="호텔"
+                            value="hotel"
+                            name="poolType"
+                            type="radio"
+                          />
+                        </div>
+                      </Form.Group>
+                      <Form.Group as={Col}>
+                        <Form.Label className="font-weight-bold">
+                          전용 수영장
                       </Form.Label>
-                      <div className="mb-3">
-                        <Form.Check label="유아" type="checkbox" />
-                        <Form.Check label="여성" type="checkbox" />
-                        <Form.Check label="장애인" type="checkbox" />
-                      </div>
-                    </Form.Group>
-                    <Form.Group as={Col}>
-                      <Form.Label className="font-weight-bold">유형</Form.Label>
-                      <div className="mb-3">
-                        <Form.Check label="실내" type="checkbox" />
-                        <Form.Check label="야외" type="checkbox" />
-                      </div>
-                    </Form.Group>
-                    <Form.Group as={Col}>
-                      <Form.Label className="font-weight-bold">
-                        자유 수영
+                        <div className="mb-3">
+                          <Form.Check label="유아" type="checkbox" />
+                          <Form.Check label="여성" type="checkbox" />
+                          <Form.Check label="장애인" type="checkbox" />
+                        </div>
+                      </Form.Group>
+                      <Form.Group as={Col}>
+                        <Form.Label className="font-weight-bold">유형</Form.Label>
+                        <div className="mb-3">
+                          <Form.Check label="실내" type="checkbox" />
+                          <Form.Check label="야외" type="checkbox" />
+                        </div>
+                      </Form.Group>
+                      <Form.Group as={Col}>
+                        <Form.Label className="font-weight-bold">
+                          자유 수영
                       </Form.Label>
-                      <div className="mb-3">
-                        <Form.Check label="가능" type="checkbox" />
-                      </div>
-                    </Form.Group>
-                  </Form.Row>
-                </Col>
-              </Form.Group>
-              <Form.Group as={Row}>
-                <Col sm={{ span: 10, offset: 2 }}>
-                  <Button variant="primary">수정</Button>
-                  <Button variant="primary">삭제</Button>
-                </Col>
-              </Form.Group>
-            </Form>
-          )}
+                        <div className="mb-3">
+                          <Form.Check label="가능" type="checkbox" />
+                        </div>
+                      </Form.Group>
+                    </Form.Row>
+                  </Col>
+                </Form.Group>
+                <Form.Group as={Row}>
+                  <Col sm={{ span: 10, offset: 2 }}>
+                    <Button variant="primary">수정</Button>
+                    <Button variant="primary">삭제</Button>
+                  </Col>
+                </Form.Group>
+              </Form>
+            )}
         </div>
       </>
     );

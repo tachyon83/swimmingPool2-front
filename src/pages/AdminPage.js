@@ -13,6 +13,8 @@ import Pagination from "react-bootstrap/Pagination";
 import "../styles/AdminPage.css";
 const host = require("../host");
 
+axios.defaults.withCredentials = true;
+
 function AdminPage({ location }) {
   let history = useHistory();
 
@@ -43,17 +45,12 @@ function AdminPage({ location }) {
         );
         items.push(
           <Pagination.Prev
-            href={`?searchWord=${query.searchWord}&poolPublic=${
-              query.poolPublic
-            }&poolPrivate=${query.poolPrivate}&poolHotel=${
-              query.poolHotel
-            }&poolForChild=${query.poolForChild}&poolForWoman=${
-              query.poolForWoman
-            }&poolForDisabled=${query.poolForDisabled}&poolIndoor=${
-              query.poolIndoor
-            }&poolOutdoor=${query.poolOutdoor}&poolOpentime=${
-              query.poolOpentime
-            }&pageNumber=${active - 1}`}
+            href={`?searchWord=${query.searchWord}&poolPublic=${query.poolPublic
+              }&poolPrivate=${query.poolPrivate}&poolHotel=${query.poolHotel
+              }&poolForChild=${query.poolForChild}&poolForWoman=${query.poolForWoman
+              }&poolForDisabled=${query.poolForDisabled}&poolIndoor=${query.poolIndoor
+              }&poolOutdoor=${query.poolOutdoor}&poolOpentime=${query.poolOpentime
+              }&pageNumber=${active - 1}`}
           />
         );
       }
@@ -155,17 +152,12 @@ function AdminPage({ location }) {
     if (active !== totalPages) {
       items.push(
         <Pagination.Next
-          href={`?searchWord=${query.searchWord}&poolPublic=${
-            query.poolPublic
-          }&poolPrivate=${query.poolPrivate}&poolHotel=${
-            query.poolHotel
-          }&poolForChild=${query.poolForChild}&poolForWoman=${
-            query.poolForWoman
-          }&poolForDisabled=${query.poolForDisabled}&poolIndoor=${
-            query.poolIndoor
-          }&poolOutdoor=${query.poolOutdoor}&poolOpentime=${
-            query.poolOpentime
-          }&pageNumber=${active + 1}`}
+          href={`?searchWord=${query.searchWord}&poolPublic=${query.poolPublic
+            }&poolPrivate=${query.poolPrivate}&poolHotel=${query.poolHotel
+            }&poolForChild=${query.poolForChild}&poolForWoman=${query.poolForWoman
+            }&poolForDisabled=${query.poolForDisabled}&poolIndoor=${query.poolIndoor
+            }&poolOutdoor=${query.poolOutdoor}&poolOpentime=${query.poolOpentime
+            }&pageNumber=${active + 1}`}
         />
       );
       items.push(
