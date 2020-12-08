@@ -34,6 +34,8 @@ function LoginPage() {
           password: password,
         })
         .then((res) => {
+          console.log('res', res)
+          console.log('res.data', res.data)
           if (res.data.response) {
             history.push("/admin");
           } else {
