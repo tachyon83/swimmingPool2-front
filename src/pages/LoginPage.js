@@ -29,43 +29,44 @@ function LoginPage() {
     } else if (password === "") {
       alert("비밀번호를 입력해주세요. ");
     } else {
-      fetch(`${host.server}/login/attempt`, {
-        method: 'post',
-        body: JSON.stringify({
-          username: username,
-          password: password,
-        })
-      })
-        .then(res => res.json())
-        .then(data => {
-          if (data.response) history.push('/admin')
-          else {
-            setUsername('')
-            setPassword('')
-            setShowErrorMsg(true)
-          }
-        }).catch(err => {
-          console.log(err)
-        })
-      // axios
-      //   .post(`${host.server}/login/attempt`, {
+      // fetch(`${host.server}/login/attempt`, {
+      //   method: 'post',
+      //   body: JSON.stringify({
       //     username: username,
       //     password: password,
       //   })
-      //   .then((res) => {
-      //     console.log('res', res)
-      //     console.log('res.data', res.data)
-      //     if (res.data.response) {
-      //       history.push("/admin");
-      //     } else {
-      //       setUsername("");
-      //       setPassword("");
-      //       setShowErrorMsg(true);
+      // })
+      //   .then(res => res.json())
+      //   .then(data => {
+      //     console.log('data', data)
+      //     if (data.response) history.push('/admin')
+      //     else {
+      //       setUsername('')
+      //       setPassword('')
+      //       setShowErrorMsg(true)
       //     }
+      //   }).catch(err => {
+      //     console.log(err)
       //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
+      axios
+        .post(`${host.server}/login/attempt`, {
+          username: username,
+          password: password,
+        })
+        .then((res) => {
+          console.log('res', res)
+          console.log('res.data', res.data)
+          if (res.data.response) {
+            history.push("/admin");
+          } else {
+            setUsername("");
+            setPassword("");
+            setShowErrorMsg(true);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   };
 
