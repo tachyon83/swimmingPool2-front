@@ -29,19 +29,24 @@ function LoginPage() {
     } else if (password === "") {
       alert("비밀번호를 입력해주세요. ");
     } else {
-      fetch.post(`${host.server}/login/attempt`, {
-        username: username,
-        password: password,
-      }).then(res => {
-        if (res.data.response) history.push('/admin')
-        else {
-          setUsername('')
-          setPassword('')
-          setShowErrorMsg(true)
-        }
-      }).catch(err => {
-        console.log(err)
+      fetch(`${host.server}/login/attempt`, {
+        method: 'post',
+        body: JSON.stringify({
+          username: username,
+          password: password,
+        })
       })
+        .then(res => res.json())
+        .then(data => {
+          if (data.response) history.push('/admin')
+          else {
+            setUsername('')
+            setPassword('')
+            setShowErrorMsg(true)
+          }
+        }).catch(err => {
+          console.log(err)
+        })
       // axios
       //   .post(`${host.server}/login/attempt`, {
       //     username: username,
