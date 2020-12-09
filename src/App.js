@@ -12,7 +12,7 @@ import "./styles/App.css";
 function App() {
   return (
     <div className="App">
-      <BrowserRouter forceRefresh={false}>
+      <BrowserRouter forceRefresh={true}>
         <Switch>
           <Route path="/" component={HomePage} exact />
           <Route path="/login" component={LoginPage} />
