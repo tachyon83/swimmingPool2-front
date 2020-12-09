@@ -52,6 +52,8 @@ function LoginPage() {
         .post(`${host.server}/login/attempt`, {
           username: username,
           password: password,
+        }, {
+          withCredentials: true
         })
         .then((res) => {
           console.log('res', res)
@@ -74,7 +76,9 @@ function LoginPage() {
 
   useEffect(() => {
     async function checkAuthenticated() {
-      const response = await axios.get(`${host.server}/isAuthenticated`);
+      const response = await axios.get(`${host.server}/isAuthenticated`, {
+        withCredentials: true
+      });
       const data = await response.data.response;
       if (data) {
         history.push("/admin");

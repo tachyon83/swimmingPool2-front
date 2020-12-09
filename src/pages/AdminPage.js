@@ -193,7 +193,9 @@ function AdminPage({ location }) {
     }
 
     async function checkAuthenticated() {
-      const response = await axios.get(`${host.server}/isAuthenticated`);
+      const response = await axios.get(`${host.server}/isAuthenticated`, {
+        withCredentials: true,
+      });
       const data = await response.data.response;
       if (!data) {
         history.push("/login");
