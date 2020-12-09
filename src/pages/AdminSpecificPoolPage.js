@@ -33,7 +33,9 @@ function AdminSpecificPoolPage({ history, match }) {
     checkAuthenticated();
 
     axios
-      .get(`${host.server}/pool/${poolId}`)
+      .get(`${host.server}/pool/${poolId}`, {
+        withCredentials: true
+      })
       .then((response) => {
         const result = response.data;
         // PoolTypeMask (poolPublic, poolPrivate, poolHotel, poolIndoor, poolOutdoor)

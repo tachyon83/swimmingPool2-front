@@ -91,7 +91,9 @@ function AdminCreate({ show }) {
       };
 
       // post request
-      axios.post(`${host.server}/admin/pool`, { information }).then((res) => {
+      axios.post(`${host.server}/admin/pool`, { information }, {
+        withCredentials: true
+      }).then((res) => {
         if (res.data.response) {
           alert("정상 처리 되었습니다. ");
           history.push({

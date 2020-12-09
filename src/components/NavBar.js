@@ -14,7 +14,9 @@ function NavBar({ page }) {
 
   useEffect(() => {
     async function checkAuthenticated() {
-      const response = await axios.get(`${host.server}/isAuthenticated`);
+      const response = await axios.get(`${host.server}/isAuthenticated`, {
+        withCredentials: true
+      });
       const data = await response.data.response;
       setIsAdmin(data);
     }
@@ -23,7 +25,9 @@ function NavBar({ page }) {
 
   const onLogoutClick = () => {
     axios
-      .get(`${host.server}/logout`)
+      .get(`${host.server}/logout`, {
+        withCredentials: true
+      })
       .then((res) => {
         if (res.data.response) {
           history.push("/");
@@ -61,10 +65,10 @@ function NavBar({ page }) {
               로그아웃
             </Button>
           ) : (
-            <Link to="/login">
-              <Button variant="primary">로그인</Button>
-            </Link>
-          )
+              <Link to="/login">
+                <Button variant="primary">로그인</Button>
+              </Link>
+            )
         ) : page === 1 ? (
           // Login Page
           <Link to="/">
@@ -77,8 +81,8 @@ function NavBar({ page }) {
             로그아웃
           </Button>
         ) : (
-          <></>
-        )}
+                <></>
+              )}
       </Navbar.Collapse>
     </Navbar>
   );

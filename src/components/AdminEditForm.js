@@ -22,7 +22,9 @@ function AdminEditForm({ history, queryResults, poolId }) {
   const [poolOpentime, setPoolOpentime] = useState(queryResults.poolOpentime);
 
   const handleDelete = () => {
-    axios.delete(`${host.server}/admin/pool/${poolId}`).then((res) => {
+    axios.delete(`${host.server}/admin/pool/${poolId}`, {
+      withCredentials: true
+    }).then((res) => {
       if (res.data.response) {
         alert("정상 처리 되었습니다. ");
         history.goBack();
@@ -86,7 +88,9 @@ function AdminEditForm({ history, queryResults, poolId }) {
         poolOpentime,
       };
 
-      axios.put(`${host.server}/admin/pool`, { information }).then((res) => {
+      axios.put(`${host.server}/admin/pool`, { information }, {
+        withCredentials: true
+      }).then((res) => {
         if (res.data.response) {
           alert("정상 처리 되었습니다. ");
         }
